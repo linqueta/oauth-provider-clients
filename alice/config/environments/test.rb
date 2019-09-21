@@ -12,4 +12,11 @@ Rails.application.configure do
   config.action_dispatch.show_exceptions = false
   config.action_controller.allow_forgery_protection = false
   config.active_support.deprecation = :stderr
+
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.rails_logger = true
+    Bullet.honeybadger = true
+    Bullet.raise = true
+  end
 end
