@@ -12,7 +12,7 @@ require 'action_mailer/railtie'
 require 'sprockets/railtie'
 Bundler.require(*Rails.groups)
 
-module Alice
+module Bob
   class Application < Rails::Application
     config.load_defaults 6.0
     config.generators.system_tests = nil
