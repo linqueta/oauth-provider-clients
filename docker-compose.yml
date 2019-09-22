@@ -1,0 +1,20 @@
+version: '2.4'
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+  server_alice:
+    environment:
+      DATABASE_NAME: server_alice_server
+      DATABASE_HOST: db
+      DATABASE_USERNAME: postgres
+    build:
+      context: server/.
+    command: bash -c "rake db:create db:migrate && rails server -b 0.0.0.0"
+    volumes:
+      - .:/myapp
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
